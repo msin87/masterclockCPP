@@ -43,8 +43,8 @@
     <ClCompile>
       <CPPLanguageStandard>
       </CPPLanguageStandard>
-      <AdditionalIncludeDirectories>Inc;Drivers\CMSIS\Include;Drivers\CMSIS\Device\ST\STM32F4xx\Include;Drivers\STM32F4xx_HAL_Driver\Inc;Middlewares\Third_Party\FreeRTOS\Source\include;Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS;Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F;Drivers\STM32F4xx_HAL_Driver\Inc\Legacy;Middlewares\Third_Party\LibJPEG\include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>flash_layout;STM32F407xx;USE_FREERTOS;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>Inc/GUI;Middlewares/Third_Party/STemWin/lib/inc;Inc/GUI/Menus;Inc/System;Inc;Drivers\CMSIS\Include;Drivers\CMSIS\Device\ST\STM32F4xx\Include;Drivers\STM32F4xx_HAL_Driver\Inc;Middlewares\Third_Party\FreeRTOS\Source\include;Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS;Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F;Drivers\STM32F4xx_HAL_Driver\Inc\Legacy;Middlewares\Third_Party\LibJPEG\include;.;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;flash_layout;STM32F407xx;USE_FREERTOS;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
     </ClCompile>
@@ -53,6 +53,7 @@
       <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <AdditionalOptions />
+      <LinkerScript />
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
@@ -60,7 +61,7 @@
       <CPPLanguageStandard>
       </CPPLanguageStandard>
       <AdditionalIncludeDirectories>Inc;Drivers\CMSIS\Include;Drivers\CMSIS\Device\ST\STM32F4xx\Include;Drivers\STM32F4xx_HAL_Driver\Inc;Middlewares\Third_Party\FreeRTOS\Source\include;Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS;Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F;Drivers\STM32F4xx_HAL_Driver\Inc\Legacy;Middlewares\Third_Party\LibJPEG\include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>flash_layout;STM32F407xx;USE_FREERTOS;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG=1;RELEASE=1;flash_layout;STM32F407xx;USE_FREERTOS;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
     </ClCompile>
@@ -71,18 +72,35 @@
       <AdditionalOptions />
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ItemGroup>
+    <ClCompile Include="IDialog.cpp" />
+    <ClCompile Include="iPeriph.cpp" />
+    <ClCompile Include="SPI.cpp" />
+    <ClCompile Include="Middlewares\Third_Party\STemWin\lib\src\GUI_X_OS.c" />
     <ClCompile Include="Src\freertos.c" />
+    <ClCompile Include="Src\GUI\Fonts\Arial16.c" />
+    <ClCompile Include="Src\GUI\Fonts\Arial18.c" />
+    <ClCompile Include="Src\GUI\Fonts\Digital-7 Mono70.c" />
+    <ClCompile Include="Src\GUI\Fonts\Digital-747.c" />
+    <ClCompile Include="Src\GUI\GUIConf.c" />
+    <ClCompile Include="Src\GUI\GUIDRV_Template.c" />
+    <ClCompile Include="Src\GUI\LCDConf.c" />
+    <ClCompile Include="Src\GUI\Menus\LineSetup.c" />
+    <ClCompile Include="Src\GUI\Menus\LineSetupPulse.c" />
+    <ClCompile Include="Src\GUI\Menus\mainMenu.c" />
+    <ClCompile Include="Src\GUI\Menus\Password.c" />
+    <ClCompile Include="Src\GUI\Menus\TimeCalibrate.c" />
+    <ClCompile Include="Src\GUI\Menus\TimeDateSetup.c" />
+    <ClCompile Include="Src\GUI\Menus\TimeSetup.c" />
+    <ClCompile Include="Src\GUI\Menus\TimeSumWinSetup.c" />
     <ClCompile Include="Src\libjpeg.c" />
     <ClCompile Include="Src\stm32f4xx_it.c" />
     <ClCompile Include="Src\stm32f4xx_hal_msp.c" />
     <ClCompile Include="Src\stm32f4xx_hal_timebase_tim.c" />
-    <ClCompile Include="Src\main.c" />
+    <ClCompile Include="Src\main.cpp" />
     <ClCompile Include="Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c" />
     <ClCompile Include="Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c" />
     <ClCompile Include="Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.c" />
@@ -166,8 +184,27 @@
     <ClCompile Include="Middlewares\Third_Party\LibJPEG\source\jmemmgr.c" />
     <ClCompile Include="Middlewares\Third_Party\LibJPEG\source\jutils.c" />
     <ClCompile Include="Middlewares\Third_Party\LibJPEG\source\jmemnobs.c" />
+    <ClCompile Include="Src\System\adc.c" />
+    <ClCompile Include="Src\System\backup.c" />
+    <ClCompile Include="Src\System\button76x76Skin.c" />
+    <ClCompile Include="Src\System\callbacks.c" />
+    <ClCompile Include="Src\System\crc.c" />
+    <ClCompile Include="Src\System\flash.c" />
+    <ClCompile Include="Src\System\guivars.c" />
+    <ClCompile Include="Src\System\lcdcmd.c" />
+    <ClCompile Include="Src\System\lines.c" />
+    <ClCompile Include="Src\System\settingsMenu.c" />
+    <ClCompile Include="Src\System\skinning.c" />
+    <ClCompile Include="Src\System\sram.c" />
+    <ClCompile Include="Src\System\timedate.c" />
+    <ClCompile Include="Src\System\touch.c" />
+    <ClCompile Include="TouchScreen.cpp" />
+    <ClInclude Include="IDialog.h" />
+    <ClInclude Include="TouchScreen.h" />
     <None Include="stm32.props" />
     <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\StartupFiles\startup_stm32f407xx.c" />
+    <ClInclude Include="iPeriph.h" />
+    <ClInclude Include="SPI.h" />
     <ClInclude Include="Inc\FreeRTOSConfig.h" />
     <ClInclude Include="Inc\libjpeg.h" />
     <ClInclude Include="Inc\jconfig.h" />
@@ -238,5 +275,8 @@
     <None Include="masterclock-Debug.vgdbsettings" />
     <None Include="masterclock-Release.vgdbsettings" />
     <None Include="stm32.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Middlewares\Third_Party\STemWin\lib\STemWin532_CM4_OS_GCC_ot.a" />
   </ItemGroup>
 </Project>

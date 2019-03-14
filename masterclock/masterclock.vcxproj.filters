@@ -172,26 +172,26 @@
     <Filter Include="VisualGDB settings">
       <UniqueIdentifier>{eeae2686-08ce-4446-90ff-3c4dc2eeb57a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source files\Menu">
+      <UniqueIdentifier>{6a4e581b-885b-4c00-bcb1-b8e0a30f1a90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STemWin">
+      <UniqueIdentifier>{2b117815-871c-492e-9133-79d2707e2283}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\System">
+      <UniqueIdentifier>{3ec4f7e9-b065-4bfc-bb0c-8f6e18fb4c2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STemWin\Config">
+      <UniqueIdentifier>{5f5f068b-82c2-4b98-95d3-0b5b40f68d61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Menu\Fonts">
+      <UniqueIdentifier>{cccd8730-4c12-4497-8654-73b6e0510687}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\System\Classes">
+      <UniqueIdentifier>{150154b3-81a9-49c9-9997-bed9fcdd955b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\freertos.c">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\libjpeg.c">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\stm32f4xx_it.c">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\stm32f4xx_hal_msp.c">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\stm32f4xx_hal_timebase_tim.c">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\main.c">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c">
       <Filter>Source files\Startup</Filter>
     </ClCompile>
@@ -657,5 +657,144 @@
     <None Include="stm32.xml">
       <Filter>VisualGDB settings</Filter>
     </None>
+    <ClCompile Include="Src\GUI\Menus\LineSetup.c">
+      <Filter>Source files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GUI\Menus\LineSetupPulse.c">
+      <Filter>Source files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GUI\Menus\mainMenu.c">
+      <Filter>Source files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GUI\Menus\Password.c">
+      <Filter>Source files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GUI\Menus\TimeCalibrate.c">
+      <Filter>Source files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GUI\Menus\TimeDateSetup.c">
+      <Filter>Source files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GUI\Menus\TimeSetup.c">
+      <Filter>Source files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GUI\Menus\TimeSumWinSetup.c">
+      <Filter>Source files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\System\adc.c">
+      <Filter>Source files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\System\backup.c">
+      <Filter>Source files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\System\button76x76Skin.c">
+      <Filter>Source files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\System\callbacks.c">
+      <Filter>Source files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\System\crc.c">
+      <Filter>Source files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\System\flash.c">
+      <Filter>Source files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\System\guivars.c">
+      <Filter>Source files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\System\lcdcmd.c">
+      <Filter>Source files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\System\lines.c">
+      <Filter>Source files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\System\settingsMenu.c">
+      <Filter>Source files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\System\skinning.c">
+      <Filter>Source files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\System\sram.c">
+      <Filter>Source files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\System\timedate.c">
+      <Filter>Source files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\System\touch.c">
+      <Filter>Source files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GUI\GUIConf.c">
+      <Filter>Source files\STemWin\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GUI\GUIDRV_Template.c">
+      <Filter>Source files\STemWin\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GUI\LCDConf.c">
+      <Filter>Source files\STemWin\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="Middlewares\Third_Party\STemWin\lib\src\GUI_X_OS.c">
+      <Filter>Source files\STemWin\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GUI\Fonts\Arial16.c">
+      <Filter>Source files\Menu\Fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GUI\Fonts\Arial18.c">
+      <Filter>Source files\Menu\Fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GUI\Fonts\Digital-7 Mono70.c">
+      <Filter>Source files\Menu\Fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GUI\Fonts\Digital-747.c">
+      <Filter>Source files\Menu\Fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\freertos.c">
+      <Filter>Source files\CORE</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\libjpeg.c">
+      <Filter>Source files\CORE</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\stm32f4xx_hal_msp.c">
+      <Filter>Source files\CORE</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\stm32f4xx_hal_timebase_tim.c">
+      <Filter>Source files\CORE</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\stm32f4xx_it.c">
+      <Filter>Source files\CORE</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\main.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="SPI.cpp">
+      <Filter>Source files\System\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="iPeriph.cpp">
+      <Filter>Source files\System\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="TouchScreen.cpp">
+      <Filter>Source files\System\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="IDialog.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Middlewares\Third_Party\STemWin\lib\STemWin532_CM4_OS_GCC_ot.a">
+      <Filter>Source files\STemWin</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SPI.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="iPeriph.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="TouchScreen.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="IDialog.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

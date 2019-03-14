@@ -54,6 +54,10 @@
 #define __MAIN_H
 
 #ifdef __cplusplus
+#include "SPI.h"
+#include "TouchScreen.h"
+SPI *spi2;
+TouchScreen *touchScreen;
 extern "C" {
 #endif
 
@@ -104,8 +108,6 @@ void Error_Handler(void);
 #define LINE2_POS_OUTPUT_GPIO_Port GPIOF
 #define LINE3_POS_OUTPUT_Pin GPIO_PIN_9
 #define LINE3_POS_OUTPUT_GPIO_Port GPIOF
-#define LCD_RESET_Pin GPIO_PIN_10
-#define LCD_RESET_GPIO_Port GPIOF
 #define RELAY1_Pin GPIO_PIN_6
 #define RELAY1_GPIO_Port GPIOG
 #define RELAY2_Pin GPIO_PIN_7
@@ -114,6 +116,10 @@ void Error_Handler(void);
 #define RELAY3_GPIO_Port GPIOG
 #define RELAY0_Pin GPIO_PIN_6
 #define RELAY0_GPIO_Port GPIOC
+#define LCD_RESET_Pin GPIO_PIN_14
+#define LCD_RESET_GPIO_Port GPIOG
+#define BACKLIGHT_CONTROL_Pin GPIO_PIN_15
+#define BACKLIGHT_CONTROL_GPIO_Port GPIOG
 #define NOT_PEN_Pin GPIO_PIN_6
 #define NOT_PEN_GPIO_Port GPIOB
 #define TOUCH_CS_Pin GPIO_PIN_7
