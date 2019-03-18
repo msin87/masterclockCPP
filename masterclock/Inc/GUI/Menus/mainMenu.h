@@ -1,5 +1,5 @@
 #ifndef MAINMENU_H
-#define MAINMENU_H	
+#define MAINMENU_H
 #include "DIALOG.h"
 #include "cmsis_os.h"
 #include "stm32f4xx_hal.h"
@@ -8,7 +8,7 @@
 #include "string.h"
 #include "lcdcmd.h"
 #include "arial18.h"
-#include "LineSetup.h"
+#include "LineSetup.hpp"
 #include "LineSetupPulse.h"
 #include "Password.h"
 #include "TimeCalibrate.h"
@@ -23,7 +23,7 @@ extern RTC_HandleTypeDef hrtc;
 extern RTC_TimeTypeDef sTime;
 extern RTC_DateTypeDef sDate;
 void TFT_ShowString(uint16_t x, uint16_t y, char *p, uint8_t fontsize, uint16_t color);
-void TFT_ReadBackground(uint16_t x, uint16_t y, uint8_t fontsize, uint16_t* backgroundBuffer);
+void TFT_ReadBackground(uint16_t x, uint16_t y, uint8_t fontsize, uint16_t *backgroundBuffer);
 void TFT_MainMenu_ShowLineTime(void);
 void TFT_MainMenu_ShowLineTime_ex(uint8_t i);
 void TFT_MainMenu_ShowLineTime_ex2(uint8_t i, uint8_t Hours, uint8_t Minutes);

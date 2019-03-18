@@ -2,7 +2,8 @@
 
 IDialog::~IDialog()
 {
-	WM_DeleteWindow(hWin);
+
+	destroy();
 }
 
 void IDialog::createAndShow()
@@ -23,7 +24,7 @@ void IDialog::hide()
 
 void IDialog::show()
 {
-	if (hWin && hMenuStack.top != hWin && !visible)
+	if (hWin && hMenuStack.top() != hWin && !visible)
 	{
 		hMenuStack.push(hWin);
 		WM_ShowWindow(hWin);
@@ -32,7 +33,7 @@ void IDialog::show()
 
 void IDialog::destroy()
 {
-	if (hMenuStack.top == hWin)
+	if (hMenuStack.top() == hWin)
 	{
 		hMenuStack.pop();
 		WM_DeleteWindow(hWin);

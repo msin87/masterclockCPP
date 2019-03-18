@@ -21,7 +21,7 @@
 // USER START (Optionally insert additional includes)
 // USER END
 
-#include "LineSetup.h"
+#include "LineSetup.hpp"
 #include "timedate.h"
 
 #include "guivars.h"
@@ -37,8 +37,6 @@
 extern RTC_TimeTypeDef sTime;
 
 extern TIM_HandleTypeDef htim7;
-
-
 
 /*********************************************************************
 *
@@ -67,7 +65,8 @@ void lineChangeStatus(uint8_t linenum, uint8_t status)
 {
 	masterClock.line[linenum].Status = status;
 	lineTemp[linenum].Status = status;
-	switch (status) {
+	switch (status)
+	{
 	case LINE_STATUS_STOP:
 		BUTTON_SetTextColor(WM_GetDialogItem(masterClock.handles->hLineSetupMenu, ID_BUTTON_LINESETUP_RUNSTOP), BUTTON_CI_DISABLED, GUI_GRAY);
 		BUTTON_SetTextColor(WM_GetDialogItem(masterClock.handles->hLineSetupMenu, ID_BUTTON_LINESETUP_RUNSTOP), BUTTON_CI_PRESSED, GUI_RED);
@@ -100,23 +99,23 @@ void lineChangeStatus(uint8_t linenum, uint8_t status)
 *       _aDialogCreate
 */
 static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
-	{ WINDOW_CreateIndirect, "Window", ID_WINDOW_LINESETUP, 1, -3, 320, 240, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "", ID_BUTTON_LINESETUP_Hplus, 5, 85, 70, 70, 0, 0x0, 0 },
-	{ HEADER_CreateIndirect, "Header", ID_HEADER_LINESETUP_VALSNAMES, 0, 40, 240, 20, 0, 0x0, 0 },
-	{ HEADER_CreateIndirect, "Header", ID_HEADER_LINESETUP_VALS, 0, 60, 240, 20, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "", ID_BUTTON_LINESETUP_Mplus, 85, 85, 70, 70, 0, 0x0, 0 },
+	{WINDOW_CreateIndirect, "Window", ID_WINDOW_LINESETUP, 1, -3, 320, 240, 0, 0x0, 0},
+	{BUTTON_CreateIndirect, "", ID_BUTTON_LINESETUP_Hplus, 5, 85, 70, 70, 0, 0x0, 0},
+	{HEADER_CreateIndirect, "Header", ID_HEADER_LINESETUP_VALSNAMES, 0, 40, 240, 20, 0, 0x0, 0},
+	{HEADER_CreateIndirect, "Header", ID_HEADER_LINESETUP_VALS, 0, 60, 240, 20, 0, 0x0, 0},
+	{BUTTON_CreateIndirect, "", ID_BUTTON_LINESETUP_Mplus, 85, 85, 70, 70, 0, 0x0, 0},
 	//{ BUTTON_CreateIndirect, "", ID_BUTTON_LINESETUP_Splus, 165, 85, 70, 70, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "Ââîä", ID_BUTTON_LINESETUP_ENTER, 245, 85, 70, 70, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "ÑÒÎÏ", ID_BUTTON_LINESETUP_RUNSTOP, 245, 5, 70, 30, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "", ID_BUTTON_LINESETUP_PULSE, 245, 45, 70, 30, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "", ID_BUTTON_LINESETUP_Hminus, 5, 165, 70, 70, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "", ID_BUTTON_LINESETUP_Mminus, 85, 165, 70, 70, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "", ID_BUTTON_LINESETUP_Zplus, 165, 85, 70, 70, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "", ID_BUTTON_LINESETUP_Zminus, 165, 165, 70, 70, 0, 0x0, 0 },
+	{BUTTON_CreateIndirect, "Ââîä", ID_BUTTON_LINESETUP_ENTER, 245, 85, 70, 70, 0, 0x0, 0},
+	{BUTTON_CreateIndirect, "ÑÒÎÏ", ID_BUTTON_LINESETUP_RUNSTOP, 245, 5, 70, 30, 0, 0x0, 0},
+	{BUTTON_CreateIndirect, "", ID_BUTTON_LINESETUP_PULSE, 245, 45, 70, 30, 0, 0x0, 0},
+	{BUTTON_CreateIndirect, "", ID_BUTTON_LINESETUP_Hminus, 5, 165, 70, 70, 0, 0x0, 0},
+	{BUTTON_CreateIndirect, "", ID_BUTTON_LINESETUP_Mminus, 85, 165, 70, 70, 0, 0x0, 0},
+	{BUTTON_CreateIndirect, "", ID_BUTTON_LINESETUP_Zplus, 165, 85, 70, 70, 0, 0x0, 0},
+	{BUTTON_CreateIndirect, "", ID_BUTTON_LINESETUP_Zminus, 165, 165, 70, 70, 0, 0x0, 0},
 	//{ BUTTON_CreateIndirect, "", ID_BUTTON_LINESETUP_Sminus, 165, 165, 70, 70, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "Íàçàä", ID_BUTTON_LINESETUP_BACK, 245, 165, 70, 70, 0, 0x0, 0 },
-	{ HEADER_CreateIndirect, "Header", ID_HEADER_LINESETUP_STATVALS, 0, 20, 240, 20, 0, 0x0, 0 },
-	{ HEADER_CreateIndirect, "Header", ID_HEADER_LINESETUP_TOP, 0, 0, 240, 20, 0, 0x0, 0 },
+	{BUTTON_CreateIndirect, "Íàçàä", ID_BUTTON_LINESETUP_BACK, 245, 165, 70, 70, 0, 0x0, 0},
+	{HEADER_CreateIndirect, "Header", ID_HEADER_LINESETUP_STATVALS, 0, 20, 240, 20, 0, 0x0, 0},
+	{HEADER_CreateIndirect, "Header", ID_HEADER_LINESETUP_TOP, 0, 0, 240, 20, 0, 0x0, 0},
 	// USER START (Optionally insert additional widgets)
 	// USER END
 };
@@ -135,10 +134,11 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 *
 *       _cbDialog
 */
-static void _cbDialog(WM_MESSAGE * pMsg) {
+static void _cbDialog(WM_MESSAGE *pMsg)
+{
 	WM_HWIN hItem;
-	int     NCode;
-	int     Id;
+	int NCode;
+	int Id;
 	char str[9];
 	uint8_t i = 0;
 	uint8_t valsChangedOld = false;
@@ -146,7 +146,8 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 	// USER START (Optionally insert additional variables)
 	// USER END
 
-	switch(pMsg->MsgId) {
+	switch (pMsg->MsgId)
+	{
 	case WM_SEC_UPDATE:
 		sprintf(str, "%02d:%02d:%02d", hoursToUTC(sTime.Hours, masterClock.daylightSaving->timeZone), sTime.Minutes, sTime.Seconds);
 		TFT_LineSetupShowString(173, 17, str, 18, 0xFFFF);
@@ -159,8 +160,8 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 		lineTemp[3] = masterClock.line[3];
 
 		//
-	// Initialization of Main Window
-	//
+		// Initialization of Main Window
+		//
 		hItem = pMsg->hWin;
 		WINDOW_SetBkColor(hItem, 0x191615);
 		//
@@ -183,7 +184,6 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 		sprintf(str, "%02d", masterClock.line[masterClock.guiVars->menuState - 4].Minutes);
 		HEADER_AddItem(hItem, 80, str, 14);
 
-
 		if ((int8_t)masterClock.line[masterClock.guiVars->menuState - 4].TimeZone > 0)
 		{
 			sprintf(str, "+%d", masterClock.line[masterClock.guiVars->menuState - 4].TimeZone);
@@ -199,7 +199,6 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 			WM_DisableWindow(WM_GetDialogItem(pMsg->hWin, ID_BUTTON_LINESETUP_Zminus));
 			WM_DisableWindow(WM_GetDialogItem(pMsg->hWin, ID_BUTTON_LINESETUP_Zplus));
 		}
-
 
 		switch (masterClock.line[masterClock.guiVars->menuState - 4].Status)
 		{
@@ -235,8 +234,6 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 
 			break;
 		}
-
-
 
 		HEADER_SetTextColor(hItem, GUI_WHITE);
 		//
@@ -276,15 +273,17 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 		Id = WM_GetId(pMsg->hWinSrc);
 		NCode = pMsg->Data.v;
 
-		switch (Id) {
+		switch (Id)
+		{
 		case ID_BUTTON_LINESETUP_Hplus: // Notifications sent by 'h+'
-			switch(NCode) {
+			switch (NCode)
+			{
 			case WM_NOTIFICATION_CLICKED:
 				// USER START (Optionally insert code for reacting on notification message)
 
-				if(lineTemp[masterClock.guiVars->menuState - 4].Hours != 23)
+				if (lineTemp[masterClock.guiVars->menuState - 4].Hours != 23)
 				{
-					pollButton(ID_BUTTON_LINESETUP_Hplus, WM_NOTIFICATION_CLICKED, (int8_t*)&lineTemp[masterClock.guiVars->menuState - 4].Hours);
+					pollButton(ID_BUTTON_LINESETUP_Hplus, WM_NOTIFICATION_CLICKED, (int8_t *)&lineTemp[masterClock.guiVars->menuState - 4].Hours);
 					lineChangeStatus(masterClock.guiVars->menuState - 4, LINE_STATUS_STOP);
 				}
 				else
@@ -299,7 +298,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 				break;
 			case WM_NOTIFICATION_RELEASED:
 				// USER START (Optionally insert code for reacting on notification message)
-				pollButton(ID_BUTTON_LINESETUP_Hplus, WM_NOTIFICATION_RELEASED, (int8_t*)&lineTemp[masterClock.guiVars->menuState - 4].Hours);
+				pollButton(ID_BUTTON_LINESETUP_Hplus, WM_NOTIFICATION_RELEASED, (int8_t *)&lineTemp[masterClock.guiVars->menuState - 4].Hours);
 
 				// USER END
 				break;
@@ -309,12 +308,13 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 			break;
 
 		case ID_BUTTON_LINESETUP_Mplus: // Notifications sent by 'm+'
-			switch(NCode) {
+			switch (NCode)
+			{
 			case WM_NOTIFICATION_CLICKED:
 				// USER START (Optionally insert code for reacting on notification message)
-				if(lineTemp[masterClock.guiVars->menuState - 4].Minutes != 59)
+				if (lineTemp[masterClock.guiVars->menuState - 4].Minutes != 59)
 				{
-					pollButton(ID_BUTTON_LINESETUP_Mplus, WM_NOTIFICATION_CLICKED, (int8_t*)&lineTemp[masterClock.guiVars->menuState - 4].Minutes);
+					pollButton(ID_BUTTON_LINESETUP_Mplus, WM_NOTIFICATION_CLICKED, (int8_t *)&lineTemp[masterClock.guiVars->menuState - 4].Minutes);
 					lineChangeStatus(masterClock.guiVars->menuState - 4, LINE_STATUS_STOP);
 				}
 				else
@@ -329,7 +329,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 				break;
 			case WM_NOTIFICATION_RELEASED:
 				// USER START (Optionally insert code for reacting on notification message)
-				pollButton(ID_BUTTON_LINESETUP_Mplus, WM_NOTIFICATION_RELEASED, (int8_t*)&lineTemp[masterClock.guiVars->menuState - 4].Minutes);
+				pollButton(ID_BUTTON_LINESETUP_Mplus, WM_NOTIFICATION_RELEASED, (int8_t *)&lineTemp[masterClock.guiVars->menuState - 4].Minutes);
 
 				// USER END
 				break;
@@ -339,7 +339,8 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 			break;
 
 		case ID_BUTTON_LINESETUP_ENTER: // Notifications sent by 'Enter'
-			switch(NCode) {
+			switch (NCode)
+			{
 			case WM_NOTIFICATION_CLICKED:
 				// USER START (Optionally insert code for reacting on notification message)
 
@@ -360,14 +361,15 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 			}
 			break;
 		case ID_BUTTON_LINESETUP_RUNSTOP: // Notifications sent by 'RUN/STOP'
-			switch(NCode) {
+			switch (NCode)
+			{
 			case WM_NOTIFICATION_CLICKED:
 				// USER START (Optionally insert code for reacting on notification message)
 				// USER END
 				break;
 			case WM_NOTIFICATION_RELEASED:
 				// USER START (Optionally insert code for reacting on notification message)
-				switch(masterClock.line[masterClock.guiVars->menuState - 4].Status)
+				switch (masterClock.line[masterClock.guiVars->menuState - 4].Status)
 				{
 				case LINE_STATUS_RUN:
 					lineChangeStatus(masterClock.guiVars->menuState - 4, LINE_STATUS_STOP);
@@ -379,19 +381,19 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 					lineChangeStatus(masterClock.guiVars->menuState - 4, LINE_STATUS_OFF);
 					break;
 				}
-				
+
 				diff = get_sTimeLinesDiff(&lineTemp[masterClock.guiVars->menuState - 4], 10);
 				masterClock.line[masterClock.guiVars->menuState - 4] = lineTemp[masterClock.guiVars->menuState - 4];
 				if (diff > 0)
 				{
-					masterClock.line[0].pTemp = (uint32_t*)&lineTemp[0];
-					masterClock.line[1].pTemp = (uint32_t*)&lineTemp[1];
-					masterClock.line[2].pTemp = (uint32_t*)&lineTemp[2];
-					masterClock.line[3].pTemp = (uint32_t*)&lineTemp[3];
+					masterClock.line[0].pTemp = (uint32_t *)&lineTemp[0];
+					masterClock.line[1].pTemp = (uint32_t *)&lineTemp[1];
+					masterClock.line[2].pTemp = (uint32_t *)&lineTemp[2];
+					masterClock.line[3].pTemp = (uint32_t *)&lineTemp[3];
 					masterClock.line[masterClock.guiVars->menuState - 4].Pulses = 0;
 					xQueueReset(masterClock.line[masterClock.guiVars->menuState - 4].xSemaphore);
 					while (diff > 0)
-					{ 
+					{
 						for (i = 0; i < LINES_AMOUNT; ++i)
 						{
 							if ((masterClock.guiVars->menuState - 4) == i && (masterClock.line[i].Status == LINE_STATUS_RUN))
@@ -410,7 +412,6 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 					masterClock.line[masterClock.guiVars->menuState - 4].Pulses = diff;
 				}
 
-
 				// USER END
 				break;
 				// USER START (Optionally insert additional code for further notification handling)
@@ -418,7 +419,8 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 			}
 			break;
 		case ID_BUTTON_LINESETUP_PULSE: // Notifications sent by 'Pulse->'
-			switch(NCode) {
+			switch (NCode)
+			{
 			case WM_NOTIFICATION_CLICKED:
 				// USER START (Optionally insert code for reacting on notification message)
 				// USER END
@@ -436,13 +438,14 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 			}
 			break;
 		case ID_BUTTON_LINESETUP_Hminus: // Notifications sent by 'h-'
-			switch(NCode) {
+			switch (NCode)
+			{
 			case WM_NOTIFICATION_CLICKED:
 				// USER START (Optionally insert code for reacting on notification message)
 
-				if(lineTemp[masterClock.guiVars->menuState - 4].Hours != 0)
+				if (lineTemp[masterClock.guiVars->menuState - 4].Hours != 0)
 				{
-					pollButton(ID_BUTTON_LINESETUP_Hminus, WM_NOTIFICATION_CLICKED, (int8_t*)&lineTemp[masterClock.guiVars->menuState - 4].Hours);
+					pollButton(ID_BUTTON_LINESETUP_Hminus, WM_NOTIFICATION_CLICKED, (int8_t *)&lineTemp[masterClock.guiVars->menuState - 4].Hours);
 					lineChangeStatus(masterClock.guiVars->menuState - 4, LINE_STATUS_STOP);
 				}
 				if (valsChangedOld != masterClock.guiVars->valsChanged)
@@ -454,7 +457,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 				break;
 			case WM_NOTIFICATION_RELEASED:
 				// USER START (Optionally insert code for reacting on notification message)
-				pollButton(ID_BUTTON_LINESETUP_Hminus, WM_NOTIFICATION_RELEASED, (int8_t*)&lineTemp[masterClock.guiVars->menuState - 4].Hours);
+				pollButton(ID_BUTTON_LINESETUP_Hminus, WM_NOTIFICATION_RELEASED, (int8_t *)&lineTemp[masterClock.guiVars->menuState - 4].Hours);
 
 				// USER END
 				break;
@@ -463,12 +466,13 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 			}
 			break;
 		case ID_BUTTON_LINESETUP_Mminus: // Notifications sent by 'm-'
-			switch(NCode) {
+			switch (NCode)
+			{
 			case WM_NOTIFICATION_CLICKED:
 				// USER START (Optionally insert code for reacting on notification message)
-				if(lineTemp[masterClock.guiVars->menuState - 4].Minutes != 0)
+				if (lineTemp[masterClock.guiVars->menuState - 4].Minutes != 0)
 				{
-					pollButton(ID_BUTTON_LINESETUP_Mminus, WM_NOTIFICATION_CLICKED, (int8_t*)&lineTemp[masterClock.guiVars->menuState - 4].Minutes);
+					pollButton(ID_BUTTON_LINESETUP_Mminus, WM_NOTIFICATION_CLICKED, (int8_t *)&lineTemp[masterClock.guiVars->menuState - 4].Minutes);
 					lineChangeStatus(masterClock.guiVars->menuState - 4, LINE_STATUS_STOP);
 				}
 				if (valsChangedOld != masterClock.guiVars->valsChanged)
@@ -479,7 +483,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 				break;
 			case WM_NOTIFICATION_RELEASED:
 				// USER START (Optionally insert code for reacting on notification message)
-				pollButton(ID_BUTTON_LINESETUP_Mminus, WM_NOTIFICATION_RELEASED, (int8_t*)&lineTemp[masterClock.guiVars->menuState - 4].Minutes);
+				pollButton(ID_BUTTON_LINESETUP_Mminus, WM_NOTIFICATION_RELEASED, (int8_t *)&lineTemp[masterClock.guiVars->menuState - 4].Minutes);
 
 				// USER END
 				break;
@@ -488,12 +492,13 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 			}
 			break;
 		case ID_BUTTON_LINESETUP_Zminus: // Notifications sent by 'm-'
-			switch(NCode) {
+			switch (NCode)
+			{
 			case WM_NOTIFICATION_CLICKED:
 				// USER START (Optionally insert code for reacting on notification message)
-				if(lineTemp[masterClock.guiVars->menuState - 4].TimeZone != -12)
+				if (lineTemp[masterClock.guiVars->menuState - 4].TimeZone != -12)
 				{
-					pollButton(ID_BUTTON_LINESETUP_Zminus, WM_NOTIFICATION_CLICKED, (int8_t*)&lineTemp[masterClock.guiVars->menuState - 4].TimeZone);
+					pollButton(ID_BUTTON_LINESETUP_Zminus, WM_NOTIFICATION_CLICKED, (int8_t *)&lineTemp[masterClock.guiVars->menuState - 4].TimeZone);
 					lineChangeStatus(masterClock.guiVars->menuState - 4, LINE_STATUS_STOP);
 				}
 				else
@@ -508,7 +513,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 				break;
 			case WM_NOTIFICATION_RELEASED:
 				// USER START (Optionally insert code for reacting on notification message)
-				pollButton(ID_BUTTON_LINESETUP_Zminus, WM_NOTIFICATION_RELEASED, (int8_t*)&lineTemp[masterClock.guiVars->menuState - 4].TimeZone);
+				pollButton(ID_BUTTON_LINESETUP_Zminus, WM_NOTIFICATION_RELEASED, (int8_t *)&lineTemp[masterClock.guiVars->menuState - 4].TimeZone);
 
 				// USER END
 				break;
@@ -517,12 +522,13 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 			}
 			break;
 		case ID_BUTTON_LINESETUP_Zplus: // Notifications sent by 'm-'
-			switch(NCode) {
+			switch (NCode)
+			{
 			case WM_NOTIFICATION_CLICKED:
 				// USER START (Optionally insert code for reacting on notification message)
-				if(lineTemp[masterClock.guiVars->menuState - 4].TimeZone != 12)
+				if (lineTemp[masterClock.guiVars->menuState - 4].TimeZone != 12)
 				{
-					pollButton(ID_BUTTON_LINESETUP_Zplus, WM_NOTIFICATION_CLICKED, (int8_t*)&lineTemp[masterClock.guiVars->menuState - 4].TimeZone);
+					pollButton(ID_BUTTON_LINESETUP_Zplus, WM_NOTIFICATION_CLICKED, (int8_t *)&lineTemp[masterClock.guiVars->menuState - 4].TimeZone);
 					lineChangeStatus(masterClock.guiVars->menuState - 4, LINE_STATUS_STOP);
 				}
 				else
@@ -537,7 +543,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 				break;
 			case WM_NOTIFICATION_RELEASED:
 				// USER START (Optionally insert code for reacting on notification message)
-				pollButton(ID_BUTTON_LINESETUP_Zplus, WM_NOTIFICATION_RELEASED, (int8_t*)&lineTemp[masterClock.guiVars->menuState - 4].TimeZone);
+				pollButton(ID_BUTTON_LINESETUP_Zplus, WM_NOTIFICATION_RELEASED, (int8_t *)&lineTemp[masterClock.guiVars->menuState - 4].TimeZone);
 
 				// USER END
 				break;
@@ -547,7 +553,8 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 			break;
 
 		case ID_BUTTON_LINESETUP_BACK: // Notifications sent by 'Back'
-			switch(NCode) {
+			switch (NCode)
+			{
 			case WM_NOTIFICATION_CLICKED:
 				// USER START (Optionally insert code for reacting on notification message)
 				// USER END
@@ -572,7 +579,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 		break;
 		// USER START (Optionally insert additional message handling)
 		// USER END
-	default :
+	default:
 		WM_DefaultProc(pMsg);
 		break;
 	}
@@ -590,7 +597,9 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 *       CreateWindow
 */
 
-WM_HWIN CreateLineSetupWindow(void) {
+WM_HWIN CreateLineSetupWindow(void)
+{
+	lineSetupMenu = new IDialog(_aDialogCreate, _cbDialog, WM_HBKWIN, 0, 0);
 	WM_HWIN hWin;
 
 	hWin = GUI_CreateDialogBox(_aDialogCreate, GUI_COUNTOF(_aDialogCreate), _cbDialog, WM_HBKWIN, 0, 0);
@@ -604,7 +613,6 @@ WM_HWIN CreateLineSetupWindow(void) {
 	WM_SetCallback(WM_GetDialogItem(hWin, ID_BUTTON_LINESETUP_ENTER), _cbEnterButton);
 	WM_SetCallback(WM_GetDialogItem(hWin, ID_HEADER_LINESETUP_STATVALS), _cbLineSetupSystemTime);
 	WM_SetCallback(WM_GetDialogItem(hWin, ID_BUTTON_LINESETUP_PULSE), _cbPulseSetupButton);
-
 
 	return hWin;
 }

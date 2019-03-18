@@ -657,9 +657,6 @@
     <None Include="stm32.xml">
       <Filter>VisualGDB settings</Filter>
     </None>
-    <ClCompile Include="Src\GUI\Menus\LineSetup.c">
-      <Filter>Source files\Menu</Filter>
-    </ClCompile>
     <ClCompile Include="Src\GUI\Menus\LineSetupPulse.c">
       <Filter>Source files\Menu</Filter>
     </ClCompile>
@@ -777,6 +774,9 @@
     <ClCompile Include="IDialog.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\GUI\Menus\LineSetup.cpp">
+      <Filter>Source files\Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="Middlewares\Third_Party\STemWin\lib\STemWin532_CM4_OS_GCC_ot.a">
@@ -796,5 +796,13 @@
     <ClInclude Include="IDialog.h">
       <Filter>Header files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="masterclock.rc">
+      <Filter>Resource files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
