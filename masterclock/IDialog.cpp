@@ -8,17 +8,35 @@ IDialog::~IDialog()
 void IDialog::createAndShow()
 {
 
-	hWin = GUI_CreateDialogBox(aDialogCreate, (sizeof(aDialogCreate) / sizeof(aDialogCreate[0])), callBack, hParrent, x0, y0);
-	hMenuStack.push(hWin);
+	hMenuStack.push(GUI_CreateDialogBox(aDialogCreate, (sizeof(aDialogCreate) / sizeof(aDialogCreate[0])), callBack, hParrent, x0, y0));
+	visible = true;
 }
 
 void IDialog::hide()
 {
-	WM_HideWindow(hWin);
+	if (hMenuStack.top() == hWin)
+	{
+		WM_HideWindow(hWin);
+		visible = false;
+	}
+}
+
+void IDialog::show()
+{
+	if (hWin && hMenuStack.top != hWin && !visible)
+	{
+		hMenuStack.push(hWin);
+		WM_ShowWindow(hWin);
+	}
 }
 
 void IDialog::destroy()
 {
-	WM_DeleteWindow(hWin);
-	hWin = 0;
+	if (hMenuStack.top == hWin)
+	{
+		hMenuStack.pop();
+		WM_DeleteWindow(hWin);
+		hWin = 0;
+		visible = false;
+	}
 }
